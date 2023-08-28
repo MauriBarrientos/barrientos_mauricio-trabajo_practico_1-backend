@@ -42,15 +42,15 @@ export const crearPlaylist = async (req, res) => {
 export const obtenerPlaylist = async (req, res) => {
     const { id } = req.params;
     try {
-        const playlists = await playlists.findByPk(id);
+        const playlist = await playlists.findByPk(id);
 
-        if (!playlists){
+        if (!playlist){
             throw ({
                 status: 400,
                 message: 'No se ha encontrado la playlist'
             });
         }
-        return res.json(playlists);
+        return res.json(playlist);
 
     } catch (error){
         console.log(error);
@@ -84,10 +84,11 @@ export const obtenerPlaylists = async (req, res) => {
 
 export const actualizarPlaylist = async (req, res) => {
     const {id} = req.params;
-    const { playlistNombre } = req.body;
+    const { playlistNombre, id_usuario } = req.body;
     try {
         const playlistActualizada = await playlists.update({
-            playlistNombre
+            playlistNombre,
+            id_usuario,
         }, {
             where: {
                 id

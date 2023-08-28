@@ -3,7 +3,7 @@ import usuarios from './usuarios.js';
 
 
 const playlists = sequelize.define('playlists', {
-    id_playlist: {
+    id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true

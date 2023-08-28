@@ -7,7 +7,7 @@ router.post('/cancion', crearCancion);
 
 router.get('/cancion/:id', obtenerCancion);
 
-router.get('/canciones/', obtenerCanciones);
+router.get('/canciones', obtenerCanciones);
 
 
 export default router;
