@@ -1,5 +1,5 @@
 import {sequelize, DataTypes} from '../db.js';
-// import playlists from './playlists.js';
+import playlists from './playlists.js';
 
 const canciones = sequelize.define('canciones', {
     id_cancion: {
@@ -20,12 +20,21 @@ const canciones = sequelize.define('canciones', {
         allowNull: false
     },
     cancionDuracion:{   
-        type: DataTypes.INTEGER,
+        type: DataTypes.TIME,
         allowNull: false
+    },
+    estado: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
+    },
+    id_playlist: {
+        type: DataTypes.INTEGER,
+        defaultValue: true
     }
 });
 
-// canciones.belongsToMany(playlists, { through: cancionesPlaylists});
-
-canciones.sync({alter :true});
+canciones.belongsTo(playlists, {
+    foreignKey: 'id_playlist',
+});
+canciones.sync();
 export default canciones;

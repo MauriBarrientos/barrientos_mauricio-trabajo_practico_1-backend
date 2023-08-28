@@ -1,5 +1,5 @@
 import {sequelize, DataTypes} from '../db.js';
-// import canciones from './canciones.js'
+import usuarios from './usuarios.js';
 
 
 const playlists = sequelize.define('playlists', {
@@ -12,13 +12,20 @@ const playlists = sequelize.define('playlists', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    playlistAutor: {
-        type: DataTypes.STRING,
+    estado: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
+    },
+    id_usuario:{
+        type: DataTypes.INTEGER,
         allowNull: false
     }
 });
 
-// playlists.belongsToMany(Cancion, { through: cancionesPlaylists });
+playlists.belongsTo(usuarios, {
+    foreignKey: 'id_usuario'
+});
 
-playlists.sync({alter :true});
+
+playlists.sync();
 export default playlists;

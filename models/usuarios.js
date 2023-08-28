@@ -18,6 +18,10 @@ const usuarios = sequelize.define('usuarios', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    estado: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
+    },
 });
 
 usuarios.sync();
