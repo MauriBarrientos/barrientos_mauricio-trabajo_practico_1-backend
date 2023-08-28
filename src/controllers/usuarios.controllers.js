@@ -1,7 +1,8 @@
+//Importación de librería 'bcrypt' y modelo de usuarios
 import bcrypt from 'bcrypt';
 import { usuarios } from '../../models/usuarios.js';
 
-
+//Controlador para crear usuario
 export const crearUsuario = async (req, res) => {
     const { username, email, password } = req.body;
     try {
@@ -11,10 +12,8 @@ export const crearUsuario = async (req, res) => {
                 email
             }
         });
-
-
         if (existeUsuario) {
-            throw ({ // throw siempre debe ejecutarse dentro de un try catch
+            throw ({ 
                 status: 400,
                 message: 'El usuario ya existe',
             })
@@ -46,6 +45,7 @@ export const crearUsuario = async (req, res) => {
     }
 };
 
+//Controlador para obtener usuario
 export const obtenerUsuario = async (req, res) => {
     const {id} = req.params;
 
@@ -67,6 +67,7 @@ export const obtenerUsuario = async (req, res) => {
     };
 }
 
+//Controlador para obtener usuarios
 export const obtenerUsuarios = async (req, res) => {
     try {
         const variosUsuarios = await usuarios.findAll({

@@ -1,4 +1,7 @@
+//Importacion del modelo playlists
 import { playlists } from "../../models/playlists.js";
+
+//Controlador para crear playlist
 export const crearPlaylist = async (req, res) => {
     const { playlistNombre, id_usuario } = req.body;
     
@@ -37,6 +40,8 @@ export const crearPlaylist = async (req, res) => {
          });
     }
 };
+
+//Controlador para obtener Playlist
 export const obtenerPlaylist = async (req, res) => {
     const { id } = req.params;
     try {
@@ -58,6 +63,7 @@ export const obtenerPlaylist = async (req, res) => {
     };
 };
 
+//Controlador para obtener Playlists
 export const obtenerPlaylists = async (req, res) => { 
     try {
         const variasPlaylists = await playlists.findAll({
@@ -80,6 +86,7 @@ export const obtenerPlaylists = async (req, res) => {
     }
 };
 
+//Controlador para actualizar playlist
 export const actualizarPlaylist = async (req, res) => {
     const {id} = req.params;
     const { playlistNombre, id_usuario } = req.body;
@@ -110,6 +117,7 @@ export const actualizarPlaylist = async (req, res) => {
     }
 };
 
+//Controlador para eliminar lógicamente una playlist
 export const eliminarPlaylist = async (req, res) => {
     const { id } = req.params 
     try{

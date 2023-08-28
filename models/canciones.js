@@ -22,7 +22,7 @@ export const canciones = sequelize.define('canciones', {
         type: DataTypes.BOOLEAN,
         defaultValue: true
     },
-    id_playlist: {
+    id: {
         type: DataTypes.INTEGER,
         defaultValue: true
     }

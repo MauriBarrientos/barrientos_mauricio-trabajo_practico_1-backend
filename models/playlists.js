@@ -1,7 +1,7 @@
 import {sequelize, DataTypes} from '../db.js';
 
 export const playlists = sequelize.define('playlists', {
-    id_playlist: {
+    id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true

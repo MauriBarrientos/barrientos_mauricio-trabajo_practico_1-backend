@@ -6,7 +6,7 @@ export const relaciones = ()=> {
     usuarios.hasMany(playlists, {foreignKey: 'id_usuario'})
     playlists.belongsTo(usuarios, {foreignKey: 'id_usuario'});
 
-    playlists.hasMany(canciones, {foreignKey: 'id_playlist'})
-    canciones.belongsTo(playlists, {foreignKey: 'id_playlist'});
+    playlists.hasMany(canciones, {foreignKey: 'id'})
+    canciones.belongsTo(playlists, {foreignKey: 'id'});
 }
 

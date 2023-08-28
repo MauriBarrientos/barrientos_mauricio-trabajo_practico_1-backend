@@ -1,10 +1,11 @@
+//Importacion del modelo
 import { canciones } from "../../models/canciones.js";
 
+//Controlador para crear cancion
 export const crearCancion = async (req, res) => {
-    const { cancionNombre, cancionArtista, cancionAño, id_playlist} = req.body;
-
+    const { cancionNombre, cancionArtista, cancionAño, id} = req.body;
     try{
-
+        //Verifica si existe la canción
         const existeCancion = await canciones.findOne({
             where: {
                 cancionNombre,
@@ -18,15 +19,16 @@ export const crearCancion = async (req, res) => {
                 message: 'La cancion ya existe',
             })
         };
-        
+        //Envío de la cancion a la BD
         const nuevaCancion = new canciones({
             cancionNombre,
             cancionArtista,
             cancionAño,
-            id_playlist
+            id,
         });
 
         const cancionCreada = await nuevaCancion.save();
+
         if(!cancionCreada) {
             throw ({
                 message: 'Error al registrar la cancion'
@@ -43,6 +45,7 @@ export const crearCancion = async (req, res) => {
     }
 };
 
+//Contorlador para obtener cancion
 export const obtenerCancion = async (req, res) => {
     const { id } = req.params;
 
@@ -64,6 +67,7 @@ export const obtenerCancion = async (req, res) => {
     };
 }
 
+//Controlador para obtener canciones
 export const obtenerCanciones = async (req, res) => {
     try {
         const variasCanciones = await canciones.findAll({
