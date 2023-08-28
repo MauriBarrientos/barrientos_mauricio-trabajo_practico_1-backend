@@ -1,7 +1,6 @@
 import {sequelize, DataTypes} from '../db.js';
-import playlists from './playlists.js';
 
-const canciones = sequelize.define('canciones', {
+export const canciones = sequelize.define('canciones', {
     id_cancion: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -19,10 +18,6 @@ const canciones = sequelize.define('canciones', {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    cancionDuracion:{   
-        type: DataTypes.TIME,
-        allowNull: false
-    },
     estado: {
         type: DataTypes.BOOLEAN,
         defaultValue: true
@@ -33,8 +28,6 @@ const canciones = sequelize.define('canciones', {
     }
 });
 
-canciones.belongsTo(playlists, {
-    foreignKey: 'id_playlist',
+canciones.sync({alter: true},()=>{
+    console.log('tabla canciones creada')
 });
-canciones.sync();
-export default canciones;

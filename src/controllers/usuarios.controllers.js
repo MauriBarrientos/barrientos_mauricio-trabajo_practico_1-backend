@@ -1,6 +1,6 @@
-const usuarioCtrl = {};
 import bcrypt from 'bcrypt';
-import usuarios from '../../models/usuarios.js'
+import { usuarios } from '../../models/usuarios.js';
+
 
 export const crearUsuario = async (req, res) => {
     const { username, email, password } = req.body;
@@ -88,5 +88,3 @@ export const obtenerUsuarios = async (req, res) => {
         });
     }
 };
-
-export default usuarioCtrl;

@@ -1,8 +1,7 @@
-export const cancionesCtrl = {};
-import canciones from '../../models/canciones.js';
+import { canciones } from "../../models/canciones.js";
 
 export const crearCancion = async (req, res) => {
-    const { cancionNombre, cancionArtista, cancionAño, cancionDuracion, id_playlist} = req.body;
+    const { cancionNombre, cancionArtista, cancionAño, id_playlist} = req.body;
 
     try{
 
@@ -24,7 +23,6 @@ export const crearCancion = async (req, res) => {
             cancionNombre,
             cancionArtista,
             cancionAño,
-            cancionDuracion,
             id_playlist
         });
 
@@ -87,5 +85,3 @@ export const obtenerCanciones = async (req, res) => {
         });
     }
 };
-
-export default cancionesCtrl;

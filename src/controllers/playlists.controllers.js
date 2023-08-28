@@ -1,6 +1,4 @@
-export const playlistsCtrl = {};
-import playlists from '../../models/playlists.js'
-
+import { playlists } from "../../models/playlists.js";
 export const crearPlaylist = async (req, res) => {
     const { playlistNombre, id_usuario } = req.body;
     
@@ -139,5 +137,3 @@ export const eliminarPlaylist = async (req, res) => {
         })
     }
 };
-
-export default playlistsCtrl;

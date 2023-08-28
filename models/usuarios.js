@@ -1,6 +1,6 @@
 import {sequelize, DataTypes} from '../db.js';
 
-const usuarios = sequelize.define('usuarios', {
+export const usuarios = sequelize.define('usuarios', {
     id_usuario: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -24,5 +24,8 @@ const usuarios = sequelize.define('usuarios', {
     },
 });
 
-usuarios.sync();
-export default usuarios;
+
+
+usuarios.sync({alter:true}, ()=>{
+    console.log('tabla usuarios creada')
+});
